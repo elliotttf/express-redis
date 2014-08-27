@@ -15,11 +15,17 @@ module.exports = function (port, host, options) {
   var client = redis.createClient(port, host, options);
 
   var f = function (req, res, next) {
-    client.on('ready', function () {
-      debug('Redis connection ready.');
+    if (client.connected) {
       req.db = client;
       next();
-    });
+    }
+    else {
+      client.on('ready', function () {
+        debug('Redis connection ready.');
+        req.db = client;
+        next();
+      });
+    }
   };
 
   return f;
