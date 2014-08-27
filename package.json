@@ -1,0 +1,14 @@
+{
+  "name": "express-redis",
+  "version": "0.0.0",
+  "description": "Express middleware for a redis connection.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "redis": "^0.12.1"
+  }
+}
