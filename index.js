@@ -2,7 +2,7 @@
 
 var redis = require('redis');
 
-module.exports = function (redis, port, host, options) {
+module.exports = function (port, host, options) {
   port = port || 6379;
   host = host || '127.0.0.1';
   options = options || {};
