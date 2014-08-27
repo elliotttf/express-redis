@@ -4,8 +4,13 @@
   "description": "Express middleware for a redis connection.",
   "main": "index.js",
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elliotttf/express-redis.git"
+  },
   "license": "MIT",
   "dependencies": {
-    "redis": "^0.12.1"
+    "redis": "^0.12.1",
+    "debug": "^1.0.4"
   }
 }
