@@ -28,6 +28,9 @@ module.exports = function (port, host, options) {
     }
   };
 
+  // Expose the client in the return object.
+  f.client = client;
+
   return f;
 };
 
