@@ -31,20 +31,25 @@ module.exports = function (port, host, options) {
   // Expose the client in the return object.
   f.client = client;
 
-  f.connect = function () {
+  f.connect = function (next) {
     if (client) {
       client.once('end', function () {
         client = redis.createClient(port, host, options);
+        next();
       });
       client.quit();
     }
     else {
       client = redis.createClient(port, host, options);
+      next();
     }
   };
 
-  f.disconnect = function () {
+  f.disconnect = function (next) {
     if (client) {
+      client.once('end', function () {
+        next();
+      });
       client.quit();
     }
   };
