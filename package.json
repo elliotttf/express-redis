@@ -1,6 +1,6 @@
 {
   "name": "express-redis",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Express middleware for a redis connection.",
   "main": "index.js",
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
