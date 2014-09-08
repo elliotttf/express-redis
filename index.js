@@ -48,6 +48,7 @@ module.exports = function (port, host, options) {
   f.disconnect = function (next) {
     if (client) {
       client.once('end', function () {
+        delete client;
         next();
       });
       client.quit();
