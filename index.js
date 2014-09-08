@@ -7,12 +7,12 @@
 var redis = require('redis');
 var debug = require('debug')('express:redis');
 
+var client;
+
 module.exports = function (port, host, options) {
   port = port || 6379;
   host = host || '127.0.0.1';
   options = options || {};
-
-  var client = redis.createClient(port, host, options);
 
   var f = function (req, res, next) {
     if (client.connected) {
@@ -30,6 +30,24 @@ module.exports = function (port, host, options) {
 
   // Expose the client in the return object.
   f.client = client;
+
+  f.connect = function () {
+    if (client) {
+      client.once('end', function () {
+        client = redis.createClient(port, host, options);
+      });
+      client.quit();
+    }
+    else {
+      client = redis.createClient(port, host, options);
+    }
+  };
+
+  f.disconnect = function () {
+    if (client) {
+      client.quit();
+    }
+  };
 
   return f;
 };
