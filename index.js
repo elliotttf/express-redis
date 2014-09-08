@@ -14,6 +14,8 @@ module.exports = function (port, host, options) {
   host = host || '127.0.0.1';
   options = options || {};
 
+  client = redis.createClient(port, host, options);
+
   var f = function (req, res, next) {
     if (client.connected) {
       req.db = client;
