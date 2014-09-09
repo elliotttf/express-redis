@@ -11,7 +11,7 @@ app.use(require('express-redis'));
 app.get('/', function (req, res, next) {
   req.db.get('some_key', function (err, reply) {
     if (err) {
-      res.end(500);
+      return res.status(500).end();
     }
 
     res.json(reply);
