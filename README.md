@@ -29,6 +29,9 @@ var options = {
   return_buffers: true,
   auth_pass: 'superSecretPassword'
 };
-app.use(require('express-redis')(6379, '127.0.0.1', options));
+app.use(require('express-redis')(6379, '127.0.0.1', options, 'name'));
 ```
+
+The name string allows you to specify a custom varaible name to provide the middleware on
+for example providing the name `'redis'` would allow you to access redis via `res.redis`
 
