@@ -9,22 +9,23 @@ var debug = require('debug')('express:redis');
 
 var client;
 
-module.exports = function (port, host, options) {
+module.exports = function (port, host, options, name) {
   port = port || 6379;
   host = host || '127.0.0.1';
   options = options || {};
+  name = name || 'db';
 
   client = redis.createClient(port, host, options);
 
   var f = function (req, res, next) {
     if (client.connected) {
-      req.db = client;
+      req[name] = client;
       next();
     }
     else {
       client.on('ready', function () {
         debug('Redis connection ready.');
-        req.db = client;
+        req[name] = client;
         next();
       });
     }
