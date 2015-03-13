@@ -18,13 +18,13 @@ module.exports = function (port, host, options) {
 
   var f = function (req, res, next) {
     if (client.connected) {
-      req.db = client;
+      req.redis = client;
       next();
     }
     else {
       client.on('ready', function () {
         debug('Redis connection ready.');
-        req.db = client;
+        req.redis = client;
         next();
       });
     }
