@@ -6,7 +6,7 @@
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pthm/express-redis.git"
+    "url": "https://github.com/elliotttf/express-redis.git"
   },
   "license": "MIT",
   "dependencies": {
