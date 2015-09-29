@@ -11,6 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "redis": "^0.12.1",
-    "debug": "^1.0.4"
+    "debug": "2.2.0"
   }
 }
