@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "redis": "^0.12.1",
+    "redis": "2.1.0",
     "debug": "2.2.0"
   }
 }
