@@ -1,8 +1,8 @@
 {
   "name": "express-redis",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Express middleware for a redis connection.",
-  "main": "index.js",
+  "main": "lib/redis.js",
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
   "repository": {
     "type": "git",
@@ -12,5 +12,20 @@
   "dependencies": {
     "redis": "2.1.0",
     "debug": "2.2.0"
+  },
+  "devDependencies": {
+    "ghooks": "0.3.2",
+    "gulp": "3.9.0",
+    "gulp-coveralls": "0.1.4",
+    "gulp-eslint": "1.0.0",
+    "gulp-istanbul": "0.8.1",
+    "gulp-nodeunit": "0.0.5",
+    "sinon": "1.17.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "gulp lint",
+      "pre-push": "gulp test"
+    }
   }
 }
