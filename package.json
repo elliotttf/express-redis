@@ -4,6 +4,9 @@
   "description": "Express middleware for a redis connection.",
   "main": "lib/redis.js",
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
+  "scripts": {
+    "test": "gulp test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/elliotttf/express-redis.git"
