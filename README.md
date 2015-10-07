@@ -1,5 +1,8 @@
 # Redis Express Middleware
 
+[![Build Status](https://travis-ci.org/elliotttf/express-redis.svg)](https://travis-ci.org/elliotttf/express-redis)
+[![Coverage Status](https://coveralls.io/repos/elliotttf/express-redis/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/express-redis?branch=master)
+
 This is a simple express middleware for [redis](https://www.npmjs.org/package/redis)
 and provides a shared redis `db` object across all requests.
 
