@@ -1,7 +1,7 @@
 var expressRedis = require('../');
 var redis = require('redis');
 var sinon = require('sinon');
-var EventEmitter = require('events');
+var EventEmitter = require('events').EventEmitter;
 
 module.exports = {
   connect: function (test) {
