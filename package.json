@@ -23,7 +23,7 @@
     "gulp-eslint": "1.0.0",
     "gulp-istanbul": "0.8.1",
     "gulp-nodeunit": "0.0.5",
-    "sinon": "1.17.1"
+    "sinon": "1.17.3"
   },
   "config": {
     "ghooks": {
