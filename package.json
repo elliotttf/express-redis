@@ -5,7 +5,10 @@
   "main": "lib/redis.js",
   "author": "Elliott Foster <elliottf@codebrews.com> (http://codebrews.com/)",
   "scripts": {
-    "test": "gulp test"
+    "test": "istanbul cover --print both nodeunit ./test/index.js",
+    "lint": "eslint .",
+    "coverage": "istanbul check-coverage --statements 100 --lines 100 --branches 100 --functions 100",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -13,22 +16,21 @@
   },
   "license": "MIT",
   "dependencies": {
-    "redis": "2.4.0",
-    "debug": "2.2.0"
+    "redis": "^2.6.2",
+    "debug": "^2.2.0"
   },
   "devDependencies": {
-    "ghooks": "0.3.2",
-    "gulp": "3.9.0",
-    "gulp-coveralls": "0.1.4",
-    "gulp-eslint": "1.0.0",
-    "gulp-istanbul": "0.8.1",
-    "gulp-nodeunit": "0.0.5",
-    "sinon": "1.17.1"
+    "coveralls": "^2.11.9",
+    "eslint": "^2.13.1",
+    "ghooks": "^1.2.4",
+    "istanbul": "^0.4.4",
+    "nodeunit": "^0.9.1",
+    "sinon": "^1.17.4"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "gulp lint",
-      "pre-push": "gulp test"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
     }
   }
 }
