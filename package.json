@@ -32,5 +32,8 @@
       "pre-commit": "npm run lint",
       "pre-push": "npm test"
     }
+  },
+  "engines": {
+    "node": ">=0.12"
   }
 }
