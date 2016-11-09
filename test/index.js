@@ -1,12 +1,18 @@
+'use strict';
+
+const init = require('./init');
+const connect = require('./connect');
+const disconnect = require('./disconnect');
+
 module.exports = {
-  tearDown: function (cb) {
+  tearDown(cb) {
     if (this.stub) {
       this.stub.restore();
     }
     cb();
   },
-  init: require('./init'),
-  connect: require('./connect'),
-  disconnect: require('./disconnect')
+  init,
+  connect,
+  disconnect,
 };
 

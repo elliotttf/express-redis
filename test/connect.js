@@ -1,43 +1,41 @@
-var expressRedis = require('../');
-var redis = require('redis');
-var sinon = require('sinon');
-var EventEmitter = require('events').EventEmitter;
+'use strict';
+
+const expressRedis = require('../');
+const redis = require('redis');
+const sinon = require('sinon');
+const EventEmitter = require('events').EventEmitter;
 
 module.exports = {
-  connect: function (test) {
+  connect(test) {
     test.expect(1);
 
-    var conn = {connected: true};
-    this.stub = sinon.stub(redis, 'createClient', function () {
-      return conn;
-    });
+    const conn = { connected: true };
+    this.stub = sinon.stub(redis, 'createClient', () => conn);
 
-    var mWare = expressRedis();
+    const mWare = expressRedis();
     conn.connected = false;
-    mWare.connect(function () {
+    mWare.connect(() => {
       test.ok(true, 'Middleware did not connect.');
       test.done();
     });
   },
-  reconnect: function (test) {
+  reconnect(test) {
     test.expect(2);
-    var conn = new EventEmitter();
-    conn.quit = function () {
+    const conn = new EventEmitter();
+    conn.quit = () => {
       test.ok(true, 'Middleware did not disconnect.');
       conn.emit('end');
     };
     conn.connected = true;
 
-    this.stub = sinon.stub(redis, 'createClient', function () {
-      return conn;
-    });
+    this.stub = sinon.stub(redis, 'createClient', () => conn);
 
-    var mWare = expressRedis();
+    const mWare = expressRedis();
 
-    mWare.connect(function () {
+    mWare.connect(() => {
       test.ok(true, 'Middleware did not reconnect.');
       test.done();
     });
-  }
+  },
 };
 
