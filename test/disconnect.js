@@ -1,28 +1,26 @@
-var expressRedis = require('../');
-var redis = require('redis');
-var sinon = require('sinon');
-var EventEmitter = require('events').EventEmitter;
+'use strict';
+
+const expressRedis = require('../');
+const redis = require('redis');
+const sinon = require('sinon');
+const EventEmitter = require('events').EventEmitter;
 
 module.exports = {
-  disconnect: function (test) {
+  disconnect(test) {
     test.expect(2);
 
-    var conn = new EventEmitter();
-    conn.quit = function () {
-      conn.emit('end');
-    };
-    this.stub = sinon.stub(redis, 'createClient', function () {
-      return conn;
-    });
+    const conn = new EventEmitter();
+    conn.quit = () => conn.emit('end');
+    this.stub = sinon.stub(redis, 'createClient', () => conn);
 
-    var mWare = expressRedis();
-    mWare.disconnect(function () {
+    const mWare = expressRedis();
+    mWare.disconnect(() => {
       test.ok(true, 'Client not disconnected.');
-      mWare.disconnect(function () {
+      mWare.disconnect(() => {
         test.ok(true, 'Already disconnected did not work.');
         test.done();
       });
     });
-  }
+  },
 };
 
