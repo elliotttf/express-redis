@@ -30,7 +30,7 @@
     "istanbul": "^0.4.4",
     "nodeunit": "^0.10.2",
     "redis": "^2.6.2",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.2",
     "sinon": "^1.17.4"
   },
   "config": {
