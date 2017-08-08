@@ -1,5 +1,7 @@
 # Redis Express Middleware
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/elliotttf/express-redis.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/elliotttf/express-redis.svg?branch=master)](https://travis-ci.org/elliotttf/express-redis)
 [![Coverage Status](https://coveralls.io/repos/elliotttf/express-redis/badge.svg?branch=master&service=github)](https://coveralls.io/github/elliotttf/express-redis?branch=master)
 
