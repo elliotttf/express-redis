@@ -10,7 +10,7 @@ module.exports = {
     test.expect(1);
 
     const conn = { connected: true };
-    this.stub = sinon.stub(redis, 'createClient', () => conn);
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => conn);
 
     const mWare = expressRedis();
     conn.connected = false;
@@ -28,7 +28,7 @@ module.exports = {
     };
     conn.connected = true;
 
-    this.stub = sinon.stub(redis, 'createClient', () => conn);
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => conn);
 
     const mWare = expressRedis();
 
@@ -38,4 +38,3 @@ module.exports = {
     });
   },
 };
-
