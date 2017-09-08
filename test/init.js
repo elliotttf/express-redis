@@ -8,7 +8,7 @@ const EventEmitter = require('events').EventEmitter;
 module.exports = {
   noOpts(test) {
     test.expect(3);
-    this.stub = sinon.stub(redis, 'createClient', () => ({ connected: true }));
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => ({ connected: true }));
 
     const mWare = expressRedis();
     test.equal(typeof mWare.connect, 'function', 'Connect method not added.');
@@ -23,7 +23,7 @@ module.exports = {
   delayedReady(test) {
     test.expect(1);
     const conn = new EventEmitter();
-    this.stub = sinon.stub(redis, 'createClient', () => conn);
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => conn);
 
     const mWare = expressRedis();
 
@@ -39,7 +39,7 @@ module.exports = {
     test.expect(1);
     const testPort = 123;
 
-    this.stub = sinon.stub(redis, 'createClient', (port) => {
+    this.stub = sinon.stub(redis, 'createClient').callsFake((port) => {
       test.equal(port, testPort, 'Custom port not used.');
       test.done();
     });
@@ -50,7 +50,7 @@ module.exports = {
     test.expect(1);
     const testHost = 'example.com';
 
-    this.stub = sinon.stub(redis, 'createClient', (port, host) => {
+    this.stub = sinon.stub(redis, 'createClient').callsFake((port, host) => {
       test.equal(host, testHost, 'Custom host not used.');
       test.done();
     });
@@ -61,7 +61,7 @@ module.exports = {
     test.expect(1);
     const testOpts = { test: 1 };
 
-    this.stub = sinon.stub(redis, 'createClient', (port, host, options) => {
+    this.stub = sinon.stub(redis, 'createClient').callsFake((port, host, options) => {
       test.equal(options.test, testOpts.test, 'Custom options not used.');
       test.done();
     });
@@ -70,7 +70,7 @@ module.exports = {
   },
   customName(test) {
     test.expect(1);
-    this.stub = sinon.stub(redis, 'createClient', () => ({ connected: true }));
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => ({ connected: true }));
 
     const mWare = expressRedis(undefined, undefined, undefined, 'redis');
     const req = {};
@@ -80,4 +80,3 @@ module.exports = {
     });
   },
 };
-

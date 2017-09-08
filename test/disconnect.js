@@ -11,7 +11,7 @@ module.exports = {
 
     const conn = new EventEmitter();
     conn.quit = () => conn.emit('end');
-    this.stub = sinon.stub(redis, 'createClient', () => conn);
+    this.stub = sinon.stub(redis, 'createClient').callsFake(() => conn);
 
     const mWare = expressRedis();
     mWare.disconnect(() => {
@@ -23,4 +23,3 @@ module.exports = {
     });
   },
 };
-
