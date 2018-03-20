@@ -11,7 +11,7 @@ and provides a shared redis `db` object across all requests.
 ## Basic Usage
 
 ```javascript
-app.use(require('express-redis'));
+app.use(require('express-redis')());
 
 app.get('/', function (req, res, next) {
   req.db.get('some_key', function (err, reply) {
