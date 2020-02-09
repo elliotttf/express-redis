@@ -29,7 +29,7 @@
     "ghooks": "^2.0.0",
     "istanbul": "^0.4.4",
     "nodeunit": "^0.11.0",
-    "redis": "^2.6.2",
+    "redis": "^3.0.1",
     "semantic-release": "^6.3.2",
     "sinon": "^3.1.0"
   },
